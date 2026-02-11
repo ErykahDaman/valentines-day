@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Said Yes! ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-burgundy: #8b1e3f;
+        --soft-rose: #f8b5c1;
+        --blush-pink: #fbd3e9;
+        --cream: #fff5f7;
+        --deep-wine: #5e1029;
+        --warm-white: #fef9fa;
+    }
+
+    body {
+        font-family: 'Crimson Text', serif;
+        background: 
+            linear-gradient(135deg, rgba(139, 30, 63, 0.05) 0%, transparent 50%),
+            linear-gradient(225deg, rgba(251, 211, 233, 0.3) 0%, transparent 50%),
+            linear-gradient(to bottom, #fef9fa 0%, #fbd3e9 50%, #f8b5c1 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        color: var(--primary-burgundy);
+    }
+
+    /* Decorative background elements */
+    body::before {
+        content: '';
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(220, 38, 79, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(251, 211, 233, 0.15) 0%, transparent 40%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Floating decorative strawberries and hearts */
+    .decoration {
+        position: fixed;
+        font-size: 30px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .decoration:nth-child(1) { top: 8%; left: 5%; animation: gentleFloat 8s ease-in-out infinite; }
+    .decoration:nth-child(2) { top: 20%; right: 8%; animation: gentleFloat 10s ease-in-out infinite 1s; }
+    .decoration:nth-child(3) { top: 60%; left: 3%; animation: gentleFloat 9s ease-in-out infinite 2s; }
+    .decoration:nth-child(4) { bottom: 15%; right: 10%; animation: gentleFloat 11s ease-in-out infinite 3s; }
+    .decoration:nth-child(5) { top: 45%; right: 5%; animation: gentleFloat 7s ease-in-out infinite 1.5s; }
+
+    @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+        50% { transform: translateY(-30px) rotate(5deg); opacity: 0.25; }
+    }
+
+    /* Floating hearts animation */
+    .floating-heart {
+        position: fixed;
+        bottom: -50px;
+        font-size: 20px;
+        animation: floatUp 15s linear infinite;
+        color: rgba(139, 30, 63, 0.3);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    @keyframes floatUp {
+        0% { 
+            transform: translateY(0) rotate(0deg); 
+            opacity: 0; 
+        }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.6; }
+        100% { 
+            transform: translateY(-100vh) rotate(360deg); 
+            opacity: 0; 
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 20px 40px;
+        animation: fadeInDown 1.2s ease-out;
+    }
+
+    header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(42px, 8vw, 72px);
+        font-weight: 700;
+        color: var(--primary-burgundy);
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(251, 211, 233, 0.4);
+        letter-spacing: -1px;
+        position: relative;
+        display: inline-block;
+    }
+
+    header h1::before {
+        content: '💕';
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 40px;
+        animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    header h1::after {
+        content: '💕';
+        position: absolute;
+        right: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 40px;
+        animation: heartbeat 2s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% { transform: translateY(-50%) scale(1); }
+        50% { transform: translateY(-50%) scale(1.2); }
+    }
+
+    header p {
+        font-size: clamp(18px, 3vw, 24px);
+        font-style: italic;
+        color: var(--deep-wine);
+        opacity: 0.85;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Spotify Section */
+    .spotify-section {
+        text-align: center;
+        margin: 40px auto 60px;
+        animation: fadeIn 1.5s ease-out 0.3s both;
+    }
+
+    .spotify-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--deep-wine) 100%);
+        color: white;
+        padding: 18px 45px;
+        border-radius: 50px;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: 'Crimson Text', serif;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 
+            0 8px 25px rgba(139, 30, 63, 0.3),
+            0 0 0 0 rgba(139, 30, 63, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .spotify-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .spotify-btn:hover::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .spotify-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 
+            0 15px 40px rgba(139, 30, 63, 0.4),
+            0 0 0 8px rgba(139, 30, 63, 0.1);
+    }
+
+    .spotify-icon {
+        font-size: 28px;
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Poems Grid */
+    .poems-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 35px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto 60px;
+    }
+
+    .poem-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(254, 249, 250, 0.9) 100%);
+        padding: 35px 30px;
+        border-radius: 25px;
+        box-shadow: 
+            0 10px 40px rgba(139, 30, 63, 0.15),
+            0 0 0 1px rgba(255, 182, 193, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: slideUp 0.8s ease-out both;
+        border: 2px solid transparent;
+    }
+
+    .poem-card:nth-child(1) { animation-delay: 0.1s; }
+    .poem-card:nth-child(2) { animation-delay: 0.2s; }
+    .poem-card:nth-child(3) { animation-delay: 0.3s; }
+    .poem-card:nth-child(4) { animation-delay: 0.4s; }
+    .poem-card:nth-child(5) { animation-delay: 0.5s; }
+    .poem-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .poem-card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, var(--soft-rose), var(--blush-pink), var(--primary-burgundy));
+        border-radius: 25px;
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: -1;
+    }
+
+    .poem-card:hover::before {
+        opacity: 1;
+    }
+
+    .poem-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 
+            0 20px 60px rgba(139, 30, 63, 0.25),
+            0 0 0 1px rgba(255, 182, 193, 0.5);
+    }
+
+    .poem-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-burgundy);
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .poem-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-burgundy), transparent);
+        border-radius: 2px;
+    }
+
+    .poem-card p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #4a1f2f;
+        font-style: italic;
+        letter-spacing: 0.3px;
+    }
+
+    /* Decorative quote marks */
+    .poem-card p::before {
+        content: '"';
+        font-size: 60px;
+        font-family: 'Playfair Display', serif;
+        color: var(--soft-rose);
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        opacity: 0.3;
+        line-height: 0;
+    }
+
+    /* Background Image Placeholders */
+    .image-decoration {
+        position: fixed;
+        border-radius: 20px;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: 0;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-decoration.img1 {
+        width: 200px;
+        height: 250px;
+        top: 15%;
+        right: 5%;
+        background: linear-gradient(135deg, var(--soft-rose), var(--blush-pink));
+        transform: rotate(8deg);
+        animation: gentleFloat 10s ease-in-out infinite;
+    }
+
+    .image-decoration.img2 {
+        width: 180px;
+        height: 220px;
+        bottom: 20%;
+        left: 3%;
+        background: linear-gradient(135deg, var(--blush-pink), var(--primary-burgundy));
+        transform: rotate(-6deg);
+        animation: gentleFloat 12s ease-in-out infinite 2s;
+    }
+
+    .image-decoration.img3 {
+        width: 160px;
+        height: 200px;
+        top: 50%;
+        left: 8%;
+        background: linear-gradient(135deg, var(--primary-burgundy), var(--deep-wine));
+        transform: rotate(12deg);
+        animation: gentleFloat 9s ease-in-out infinite 1s;
+    }
+
+    /* Footer Message */
+    .footer-message {
+        text-align: center;
+        padding: 40px 20px 60px;
+        animation: fadeIn 2s ease-out 1s both;
+    }
+
+    .footer-message p {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 3vw, 28px);
+        font-style: italic;
+        color: var(--primary-burgundy);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .footer-message .signature {
+        font-size: 24px;
+        margin-top: 25px;
+        font-weight: 600;
+        color: var(--deep-wine);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        header h1::before,
+        header h1::after {
+            display: none;
+        }
+
+        .poems-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .poem-card {
+            padding: 28px 25px;
+        }
+
+        .spotify-btn {
+            padding: 15px 35px;
+            font-size: 18px;
+        }
+
+        .image-decoration {
+            opacity: 0.04;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header {
+            padding: 40px 15px 30px;
+        }
+
+        .poem-card h3 {
+            font-size: 24px;
+        }
+
+        .poem-card p {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Decorative Elements -->
+<div class="decoration">🍓</div>
+<div class="decoration">💖</div>
+<div class="decoration">🍓</div>
+<div class="decoration">💗</div>
+<div class="decoration">🍓</div>
+
+<!-- Background Image Decorations -->
+<div class="image-decoration img1"></div>
+<div class="image-decoration img2"></div>
+<div class="image-decoration img3"></div>
+
+<div class="container">
+    <header>
+        <h1>You Said Yes!</h1>
+        <p>So here are a few words I've been meaning to tell you…</p>
+    </header>
+
+    <div class="spotify-section">
+        <a href="https://open.spotify.com/playlist/6X0ObKDd25dlLc9h7U77J1?si=jnMa8bM5SymK990h-yrz_Q" target="_blank" class="spotify-btn">
+            <span class="spotify-icon">🎵</span>
+            <span>My valentine Playlist gift</span>
+        </a>
+    </div>
+
+   <div class="poem-card">
+    <h3>In Every Lifetime</h3>
+    <p>
+        If there are worlds beyond this one,<br>
+        And time begins again,<br>
+        I would search through every lifetime<br>
+        Just to find your hand in mine.<br>
+        And every version of me<br>
+        Would still fall for you.
+    </p>
+</div>
+
+<div class="poem-card">
+    <h3>Your Smile</h3>
+    <p>
+        Your smile is my favorite sunrise,<br>
+        Quiet, warm, and full of light.<br>
+        It softens the sharp edges of the world<br>
+        And turns ordinary days into magic.<br>
+        When you smile at me,<br>
+        Everything feels right.
+    </p>
+</div>
+
+<div class="poem-card">
+    <h3>Just You</h3>
+    <p>
+        I don't need grand gestures or fireworks,<br>
+        Just your hand brushing against mine.<br>
+        Just your voice saying my name softly.<br>
+        In a world full of noise,<br>
+        You are the only sound<br>
+        My heart listens for.
+    </p>
+</div>
+
+<div class="poem-card">
+    <h3>Always</h3>
+    <p>
+        Not only on the easy days,<br>
+        Not only when the skies are clear.<br>
+        But in the quiet, messy, ordinary moments,<br>
+        I will choose you.<br>
+        Over and over again,<br>
+        Without hesitation.
+    </p>
+</div>
+
+<div class="poem-card">
+    <h3>Home</h3>
+    <p>
+        Home is no longer walls and windows,<br>
+        It is your heartbeat beneath my ear.<br>
+        It is the comfort of your presence,<br>
+        The peace I feel beside you.<br>
+        Wherever you are,<br>
+        That is where I belong.
+    </p>
+</div>
+
+<div class="poem-card">
+    <h3>Forever Begins Now</h3>
+    <p>
+        Forever is not a distant promise,<br>
+        It is this moment with you.<br>
+        This breath, this smile,<br>
+        This quiet knowing in my chest.<br>
+        If forever has a beginning,<br>
+        It begins with us.
+    </p>
+</div>
+
+
+    <div class="footer-message">
+        <p>
+            Thank you for saying yes to this journey with me. 
+            Here's to all the chapters we'll write together. 💕
+        </p>
+        <p class="signature">Forever yours 🍓</p>
+    </div>
+</div>
+
+<script>
+    // Create floating hearts continuously
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('floating-heart');
+        heart.innerHTML = ['❤️', '💕', '💖', '💗'][Math.floor(Math.random() * 4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+        heart.style.animationDuration = (Math.random() * 5 + 10) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        
+        document.body.appendChild(heart);
+
+        // Remove after animation completes
+        setTimeout(() => {
+            heart.remove();
+        }, 20000);
+    }
+
+    // Create hearts at intervals
+    setInterval(createFloatingHeart, 800);
+
+    // Create initial batch
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createFloatingHeart, i * 200);
+    }
+
+    // Add parallax effect to decorative images
+    document.addEventListener('mousemove', (e) => {
+        const images = document.querySelectorAll('.image-decoration');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        images.forEach((img, index) => {
+            const speed = (index + 1) * 10;
+            const xMove = (x - 0.5) * speed;
+            const yMove = (y - 0.5) * speed;
+            img.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${8 - index * 2}deg)`;
+        });
+    });
+</script>
+
+</body>
+</html>

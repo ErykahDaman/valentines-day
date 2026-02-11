@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine ❤️</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Georgia', serif;
+        background-color: #ffe0e6;
+        background-image: 
+            repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,182,193,.1) 35px, rgba(255,182,193,.1) 70px),
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><g fill="%23ff6b8a" opacity="0.08"><circle cx="20" cy="20" r="3"/><circle cx="60" cy="40" r="2"/><circle cx="40" cy="60" r="2.5"/><path d="M25 15 Q30 10 35 15 Q40 10 45 15 Q40 20 35 25 Q30 20 25 15"/></g></svg>');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Floating strawberries decoration */
+    body::before {
+        content: '🍓';
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        font-size: 40px;
+        opacity: 0.3;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    body::after {
+        content: '🍓';
+        position: absolute;
+        bottom: 15%;
+        right: 12%;
+        font-size: 35px;
+        opacity: 0.3;
+        animation: float 7s ease-in-out infinite 1s;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .container {
+        background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
+        padding: 50px 40px;
+        border-radius: 30px;
+        box-shadow: 
+            0 20px 60px rgba(255, 107, 138, 0.3),
+            0 0 0 1px rgba(255, 107, 138, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        border: 3px solid #ffcdd9;
+    }
+
+    /* Decorative corner elements */
+    .container::before,
+    .container::after {
+        content: '🎀';
+        position: absolute;
+        font-size: 30px;
+        opacity: 0.7;
+    }
+
+    .container::before {
+        top: -15px;
+        left: -15px;
+    }
+
+    .container::after {
+        bottom: -15px;
+        right: -15px;
+    }
+
+    .image-container {
+        background: white;
+        padding: 15px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(220, 38, 79, 0.15);
+        margin-bottom: 25px;
+        border: 3px solid #ffb3c6;
+        position: relative;
+    }
+
+    .meme-placeholder {
+        width: 100%;
+        height: 280px;
+        background: linear-gradient(135deg, #ffe5ec 0%, #ffd4dd 100%);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ff4d6d;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border: 2px dashed #ffb3c6;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .meme-placeholder::before {
+        content: '🍓';
+        position: absolute;
+        font-size: 80px;
+        opacity: 0.15;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .meme-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    h1 {
+        color: #dc264f;
+        margin-bottom: 30px;
+        font-size: 32px;
+        text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.3);
+        position: relative;
+        display: inline-block;
+    }
+
+    h1::before {
+        content: '💕';
+        margin-right: 10px;
+    }
+
+    h1::after {
+        content: '💕';
+        margin-left: 10px;
+    }
+
+    .buttons {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    button {
+        padding: 15px 40px;
+        font-size: 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .yes {
+        background: linear-gradient(135deg, #ff4d6d 0%, #dc264f 100%);
+        color: white;
+        border: 3px solid #ff6b8a;
+    }
+
+    .yes:hover {
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+    }
+
+    .no {
+        background: linear-gradient(135deg, #ffa5b8 0%, #ff8fa3 100%);
+        color: white;
+        border: 3px solid #ffb3c6;
+        transition: all 0.3s ease;
+    }
+
+    .no:hover {
+        background: linear-gradient(135deg, #ff8fa3 0%, #ff7a92 100%);
+    }
+
+    #warning {
+        margin-top: 20px;
+        color: #dc264f;
+        font-weight: bold;
+        font-size: 18px;
+        min-height: 30px;
+        text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.3);
+    }
+
+    /* Sparkle animation */
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0); }
+        50% { opacity: 1; transform: scale(1); }
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #ff4d6d;
+        border-radius: 50%;
+        animation: sparkle 2s infinite;
+        box-shadow: 0 0 10px #ff4d6d;
+    }
+
+    .sparkle:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 60%; right: 20%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: 30%; left: 25%; animation-delay: 1s; }
+
+    /* Hearts decoration */
+    .heart-decoration {
+        position: absolute;
+        font-size: 20px;
+        opacity: 0.2;
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .heart-decoration:nth-child(1) { top: 5%; right: 5%; animation-delay: 0s; }
+    .heart-decoration:nth-child(2) { top: 50%; left: 2%; animation-delay: 1s; }
+    .heart-decoration:nth-child(3) { bottom: 10%; right: 8%; animation-delay: 2s; }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 35px 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+        }
+
+        .meme-placeholder {
+            height: 220px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    
+    <div class="heart-decoration">❤️</div>
+    <div class="heart-decoration">💖</div>
+    <div class="heart-decoration">💗</div>
+
+    <div class="image-container">
+        <div class="meme-placeholder" id="memePlaceholder">
+            <img src="mylove.jpg">
+        </div>
+    </div>
+
+    <h1>Will You Be My Valentine?</h1>
+
+    <div class="buttons">
+        <button class="yes" onclick="goToYes()">Yes! 💕</button>
+        <button class="no" id="noBtn" onclick="shrinkNo()">No 😢</button>
+    </div>
+
+    <div id="warning"></div>
+</div>
+
+<script>
+    let noSize = 1;
+    let clickCount = 0;
+
+    const messages = [
+        "Are you sure? 🥺",
+        "Please reconsider... 💔",
+        "The button is getting smaller... 😭",
+        "Really? 🍓💔",
+        "One more chance? 🥺👉👈"
+    ];
+
+    function shrinkNo() {
+        const warning = document.getElementById("warning");
+        const noBtn = document.getElementById("noBtn");
+
+        if (clickCount < messages.length) {
+            warning.innerText = messages[clickCount];
+            clickCount++;
+        }
+
+        noSize -= 0.15;
+
+        if (noSize <= 0.2) {
+            noBtn.style.display = "none";
+            warning.innerText = "The 'No' button has disappeared! 💕 I guess you have to say Yes now! 🍓";
+            warning.style.color = "#ff4d6d";
+        } else {
+            noBtn.style.transform = "scale(" + noSize + ")";
+            noBtn.style.opacity = noSize;
+        }
+    }
+
+    function goToYes() {
+        // Create celebration effect
+        document.body.style.background = "linear-gradient(135deg, #ff4d6d 0%, #dc264f 100%)";
+        
+        // You can redirect to yes.html or show a message
+        // window.location.href = "yes.html";
+        
+        // Or show an alert (remove this if you create yes.html)
+        setTimeout(() => {
+            alert("Yay! 🎉💕 You made me the happiest! 🍓");
+        }, 500);
+    }
+
+    // Optional: Allow users to add their own image
+    // You can replace the placeholder with an actual image by adding:
+    // <img src="your-meme-image.jpg" alt="Valentine Meme">
+    // inside the meme-placeholder div
+</script>
+
+</body>
+</html>
