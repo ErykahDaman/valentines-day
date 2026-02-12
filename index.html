@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -334,24 +335,15 @@
     }
 
     function goToYes() {
-         window.location.href = "yes.html";
+        // Create celebration effect
         document.body.style.background = "linear-gradient(135deg, #ff4d6d 0%, #dc264f 100%)";
         
-        // You can redirect to yes.html or show a message
-        // window.location.href = "yes.html";
-        
-        // Or show an alert (remove this if you create yes.html)
+        // Redirect to yes.html
         setTimeout(() => {
-            alert("Yay! 🎉💕 You made me the happiest! 🍓");
+            window.location.href = "yes.html";
         }, 500);
     }
-
-    // Optional: Allow users to add their own image
-    // You can replace the placeholder with an actual image by adding:
-    // <img src="your-meme-image.jpg" alt="Valentine Meme">
-    // inside the meme-placeholder div
 </script>
 
 </body>
-
 </html>
